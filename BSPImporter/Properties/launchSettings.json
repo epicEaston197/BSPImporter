@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DeBug": {
+      "commandName": "Executable",
+      "executablePath": "$(NeosPath)Neos.exe",
+      "commandLineArgs": "-LoadAssembly Libraries\\NeosModLoader.dll -CachePath \"D:\\Neos Data Folder\\CachePath\" -datapath \"D:\\Neos Data Folder\\CachePath\"",
+      "workingDirectory": "$(NeosPath)"
+    }
+  }
+}
