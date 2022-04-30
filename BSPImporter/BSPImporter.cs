@@ -15,7 +15,7 @@ namespace BSPImporter
         public override string Version => "1.0.0";
         public override void OnEngineInit()
         {
-            Harmony harmony = new Harmony("epiceaston197.bpsimporter");
+            Harmony harmony = new Harmony("epiceaston197.bspimporter");
             harmony.PatchAll();
         }
 
@@ -74,12 +74,14 @@ content_manager.clean()
 bpy.ops.export_scene.gltf(filepath='{tempPath + "\\\\" + Path.GetFileNameWithoutExtension(file)}.glb')
                     ";
 
+                Debug($"Running blender ({BlenderInterface.Executable}) with script\n" + myScript);
+
                 AccessTools.Method(typeof(BlenderInterface), "RunScript").Invoke(null, new object[] {
                     myScript,
                     "--background --python \"{0}\""});
 
                 // Have neos import like a normal glb
-                Error($"file is at {file}");
+                Msg($"Importing converted bsp file {file}");
                 file = $"{tempPath}\\\\{Path.GetFileNameWithoutExtension(file)}.glb";
                 return true;
             }
